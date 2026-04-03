@@ -1,11 +1,8 @@
 import express from 'express';
+import { PORT } from './config/app.js';
+import './config/database.js';
 
 const app = express();
-const PORT = 3000;
-
-app.listen(PORT, () => {
-    console.log(`Started server on port ${PORT}`);
-});
 
 app.use(express.static('public'));
 
@@ -14,3 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Tells Express to use EJS as a templating engine
 app.set('view engine', 'ejs');
+
+app.listen(PORT, () => {
+    console.log(`Started server on port ${PORT}`);
+});
