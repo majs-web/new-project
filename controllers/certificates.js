@@ -11,13 +11,6 @@ router.get('/views/certificates', (request, response) => {
     }); // Calling json method will send array passed to it as a JSON string (good for db)
 });
 
-const generateId = () => {
-    const maxId = certificates.length > 0
-        ? Math.max(...certificates.map(n => Number(n.id)))
-        : 0
-    return String(maxId + 1);
-};
-
 // Create certificate, savedCertificate = new certificate (a param in the callback function)
 router.post('/views/certificates', (request, response) => {
     const body = request.body;
