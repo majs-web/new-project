@@ -1,0 +1,23 @@
+{
+  "name": "new-project",
+  "version": "1.0.0",
+  "description": "SE_19-project",
+  "homepage": "https://github.com/majs-web/new-project#readme",
+  "bugs": {
+    "url": "https://github.com/majs-web/new-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majs-web/new-project.git"
+  },
+  "license": "ISC",
+  "author": "Maja Lie",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
