@@ -17,10 +17,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "lint": "eslint ."
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.4.0",
     "ejs": "^5.0.1",
     "express": "^5.2.1",
