@@ -2,7 +2,6 @@ import express from 'express';
 
 // Import middleware
 import { errorHandler, requestLogger, unkownEndpoint } from './middlewares/logger.js';
-import { info, error } from './logger.js';
 
 // Import config files
 import { PORT } from './config/app.js';
@@ -36,7 +35,7 @@ app.use(requestLogger);
 
 // Add route functions
 app.use(simpleRoutes);
-app.use('/views/certificates', certificatesRoutes);
+app.use('/views/certificates', certificatesRoutes); // 
 app.use(loginRoutes);
 app.use(userRoutes);
 

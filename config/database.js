@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 /* import { MONGODB_URI } from "./app"; */
 
 /* mongoose.connect(MONGODB_URI)
@@ -8,7 +9,7 @@ import mongoose from "mongoose";
     .catch(error => {
         console.log('error connecting to MongoDB: ', error.message)
     })*/
-
+        
 mongoose.set('strictQuery', false);
 
 mongoose.connect('mongodb://127.0.0.1:27017/bondeappen')
