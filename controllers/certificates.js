@@ -12,21 +12,19 @@ router.get('/views/certificates', (request, response) => {
 });
 
 // Create certificate, savedCertificate = new certificate (a param in the callback function)
-router.post('/views/certificates', (request, response) => {
+router.post('/views/certificates', (request, response, next) => {
     const body = request.body;
-
-    if (!body.content) {
-        return response.status(400).json({ error: 'content missing' });
-    };
 
     const certificate = new Certificate({
         content: body.content,
         important: body.important || false,
     });
 
-    certificate.save().then(savedCertificate => {
-        response.json(savedCertificate);
-    })
+    certificate.save()
+        .then(savedCertificate => {
+            response.json(savedCertificate);
+        })
+        .catch(error => next(error));
 });
 
 // Using Mongoose findById method to fetch individual certficates

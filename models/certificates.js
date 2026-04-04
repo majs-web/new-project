@@ -1,10 +1,16 @@
 
 import mongoose from "mongoose";
 
+
 const certificateSchema = new mongoose.Schema({
-    content: String,
+    content: { // Define validation rules for each field
+        type: String,
+        minLength: 5,
+        required: true
+    },
     important: Boolean,
 });
+// minLength and required validators are built into Mongoose
 
 // certificateSchema is an object --> should be turned into a string
 /* certificateSchema.set('toJSON', {
