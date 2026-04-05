@@ -7,18 +7,15 @@
 // Can also contain just part of the name:
 // -> npm run test -- --test-name-pattern="certificates"
 
-import assert, { strictEqual } from 'node:assert';
+import assert from 'node:assert';
 import { test, after, beforeEach, describe } from 'node:test';
-import mongoose, { trusted } from 'mongoose';
+import mongoose from 'mongoose';
 import supertest from 'supertest';
 // Uses app from app.js, not index.js, which does not listen for a port
 // supertest takes care of it
 import app from '../app.js';
 import helper from './test_helper.js';
 import { Certificate } from '../models/certificates';
-import strict from 'node:assert/strict';
-import TestAgent from 'supertest/lib/agent.js';
-import { constants } from 'node:buffer';
 
 // Wrap app.js with the supertest function
 const api = supertest(app);
@@ -26,7 +23,7 @@ const api = supertest(app);
 // db cleared out in beginning -> we save the two certificates above
 // stored in the initialCertificattes array to the db
 // -> this ensures that the db is in the same state before every test run
-describe('when there is initially some notes saved', () => {
+describe('when there is initially some certificates saved', () => {
     beforeEach(async () => {
         await Certificate.deleteMany({})
         await Certificate.insertMany(helper.initialCertificates)
@@ -37,7 +34,7 @@ describe('when there is initially some notes saved', () => {
     // + verifies that content-type is set to app/json
     test('certificates are returned as json', async () => {
         await api
-            .get('/views/notes')
+            .get('/views/certificates')
             .expect(200)
             .expect('Content-Type', /application\/json/)
     })
@@ -56,7 +53,7 @@ describe('when there is initially some notes saved', () => {
         assert(contents.includes('Fire Certificate'))
     })
 
-    describe ('viewing a specific note', () => {
+    describe ('viewing a specific certificate', () => {
         test('succeeds with a valid id', async () => {
             const certificatesAtStart = await helper.certificatesInDb()
             const certficateToView = certificatesAtStart[0]
@@ -69,7 +66,7 @@ describe('when there is initially some notes saved', () => {
             assert.deepStrictEqual(resultCertificate.body, certficateToView)
         })
 
-        test('fails with statuscode 404 if note does not exist', async () => {
+        test('fails with statuscode 404 if certificate does not exist', async () => {
             const validNonexistingId = await helper.nonExistingId()
 
             await api
