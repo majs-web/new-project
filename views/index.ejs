@@ -1,7 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./includes/head', {title: Home | Bondeappen }) %>
+<%- include('includes/head', {title: 'Home | Bondeappen' }) %>
 <body>
+    <%- include('includes/header') %>
     
+    <div class="hero">
+        <div class="content">
+            <p><strong>Bondeappen</strong></p>
+            <h2>Simplifying farming</h2>
+            <p>Empowering farmers through digital solutions</p>
+            <a href="/signup" class="cta-button">Sign up</a>
+        </div>
+        <div class="img">
+            <img height="400px" width="400px">
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>How it works</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vulputate nulla at 
+            pellentesque consectetur.</br>
+            Etiam interdum tortor quis venenatis lacinia. 
+        </p>
+        <div class="feature-grid">
+            <div class="feature-item">1. Lorem ipsum dolor sit amet.</div>
+            <div class="feature-item">2. Proin vulputate nulla at pellemtesque.</div>
+            <div class="feature-item">3. Etiam interdum tortor quis venenatis.</div>
+        </div>
+    </div>
+
+    <%- include('includes/footer') %>
 </body>
 </html>
