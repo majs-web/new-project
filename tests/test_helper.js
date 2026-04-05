@@ -1,5 +1,6 @@
 
 import { Certificate } from "../models/certificates";
+import { User } from "../models/user";
 
 export const initialCertificates = [
     {
@@ -23,4 +24,9 @@ export const nonExistingId = async () => {
 export const certficatesInDb = async () => {
     const certficates = await Certificate.find({})
     return certficates.map(certificate => certificate.toJSON())
+}
+
+export const usersInDb = async () => {
+    const users = await User.find({})
+    return users.map(u => u.toJSON())
 }

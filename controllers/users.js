@@ -5,7 +5,12 @@ import { User } from '../models/user.js';
 
 const router = Router();
 
-router.post('/', async (request, response) => {
+router.get('/views/users', async (request, response) => {
+    const users = await User.find({})
+    response.json(users)
+})
+
+router.post('/views/users', async (request, response) => {
     const { username, name, password } = request.body
 
     const saltRounds = 10
