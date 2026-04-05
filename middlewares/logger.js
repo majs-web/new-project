@@ -22,6 +22,12 @@ export const errorHandler = (error, request, response, next) => {
     // If user tries to create new user with name that already exists
     } else if (error.name === 'MongoServerError' && error.message.includes('E11000 duplicate key error')) {
         return response.status(400).json({ error: 'expected `username` to be unique' })
+
+    // If token is missing or invalid
+    } else if (error.name === 'JsonWebTokenError') {
+        return response.status(401).json({ error: 'token invalid' })
+    } else if (error.name === 'TokenExpiredError') {
+        return response.status(401).json({ error: 'token expired' })
     }
 
     next(error);
