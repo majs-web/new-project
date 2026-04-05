@@ -7,27 +7,23 @@ const router = Router();
 //NB: All routes now only '/', path set in app.js
 
 // Defines event handler for HTTP GET requests to the certificates path of the app
-router.get('/', (request, response) => {
-    Certificate.find({}).then(certificates => {
-        response.json(certificates);
-    }); // Calling json method will send array passed to it as a JSON string (good for db)
+router.get('/', async (request, response) => {
+    const certificates = await Certificate.find({})
+    response.json(certificates); // Calling json method will send array passed to it as a JSON string (good for db)
 });
 
 // Using Mongoose findById method to fetch individual certficates
-router.get('/views/certificates/:id', (request, response, next) => {
-    Certificate.findById(request.params.id)
-        .then(certificate => {
-            if (certificate) {
-                response.json(certificate)
-            } else {
-                response.status(404).end()
-            }
-        })
-        .catch(error => next(error))
+router.get('/:id', async (request, response) => {
+    const certficate = await Certificate.findById(request.params.id)
+    if (certficate) {
+        response.json(certificate)
+    } else {
+        response.status(404).end()
+    }
 });
 
 // Create certificate, savedCertificate = new certificate (a param in the callback function)
-router.post('/', (request, response, next) => {
+router.post('/', async (request, response) => {
     const body = request.body;
 
     const certificate = new Certificate({
@@ -35,19 +31,13 @@ router.post('/', (request, response, next) => {
         important: body.important || false,
     });
 
-    certificate.save()
-        .then(savedCertificate => {
-            response.json(savedCertificate);
-        })
-        .catch(error => next(error));
+    const savedCertificate = await certificate.save()
+    response.status(201).json(savedCertificate)
 });
 
-router.delete('/:id', (request, response, next) => {
-    Certificate.findByIdAndDelete(request.params.id)
-        .then(() => {
+router.delete('/:id', async (request, response) => {
+    await Certificate.findByIdAndDelete(request.params.id)
             response.status(204).end()
-        })
-        .catch(error => next(error))
 });
 
 // Functionality to update a single certificate, allowing importance to be changed

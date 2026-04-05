@@ -10,7 +10,7 @@ import './config/database.js';
 import simpleRoutes from './controllers/simple-pages.js';
 import certificatesRoutes from './controllers/certificates.js';
 import loginRoutes from './controllers/login.js';
-import userRoutes from './controllers/user.js';
+import usersRoutes from './controllers/users.js';
 
 const app = express();
 
@@ -34,7 +34,7 @@ app.use(requestLogger);
 app.use(simpleRoutes);
 app.use('/views/certificates', certificatesRoutes); // 
 app.use(loginRoutes);
-app.use(userRoutes);
+app.use('/views/users', usersRoutes);
 
 // This middleware after routes to catch requests maed to non-existent routes
 app.use(unkownEndpoint);
