@@ -3,9 +3,9 @@ import bcrypt from 'bcrypt';
 import { Router } from 'express';
 import { User } from '../models/user.js';
 
-const router = Router();
+const usersRouter = Router();
 
-router.get('/views/users', async (request, response) => {
+usersRouter.get('/', async (request, response) => {
     const users = await User
         .find({}).populate('certificates', { content: 1, important: 1 }) 
         //.populate to get user objects to contain user's notes, not jus id
@@ -13,7 +13,7 @@ router.get('/views/users', async (request, response) => {
     response.json(users)
 })
 
-router.post('/views/users', async (request, response) => {
+usersRouter.post('/', async (request, response) => {
     const { username, name, password } = request.body
 
     const saltRounds = 10
@@ -30,4 +30,4 @@ router.post('/views/users', async (request, response) => {
     response.status(201).json(savedUser)
 })
 
-export default router;
+export default usersRouter;

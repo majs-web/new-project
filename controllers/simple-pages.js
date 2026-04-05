@@ -1,11 +1,11 @@
 
 import { Router } from "express";
 
-const router = Router();
+const simpleRouter = Router();
 
-router.get('/', (request, response) => {
+simpleRouter.get('/', (request, response) => {
     response.send('<h1>Hello World!</h1>');
 });
 
 
-export default router;
+export default simpleRouter;

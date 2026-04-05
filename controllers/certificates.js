@@ -2,13 +2,14 @@
 import { Router } from "express";
 import { Certificate } from '../models/certificates.js';
 import { User } from '../models/user.js';
+import jwt from 'jsonwebtoken';
 
-const router = Router();
+const certificateRouter = Router();
 
 //NB: All routes now only '/', path set in app.js
 
 // Defines event handler for HTTP GET requests to the certificates path of the app
-router.get('/', async (request, response) => {
+certificateRouter.get('/', async (request, response) => {
     const certificates = await Certificate
         .find({}).populate('user', { username: 1, name: 1 })
         // .populate + {} returns username and name with the certificates
@@ -17,23 +18,38 @@ router.get('/', async (request, response) => {
 });
 
 // Using Mongoose findById method to fetch individual certficates
-router.get('/:id', async (request, response) => {
-    const certficate = await Certificate.findById(request.params.id)
-    if (certficate) {
+certificateRouter.get('/:id', async (request, response) => {
+    const certificate = await Certificate.findById(request.params.id)
+    if (certificate) {
         response.json(certificate)
     } else {
         response.status(404).end()
     }
 });
 
+// To allow only logged in users to create certificates, using Bearer scheme
+const getTokenFrom = request => {
+    const authorization = request.get('authorization')
+    if (authorization && authorization.startsWith('Bearer ')) {
+        return authorization.replace('Bearer ', '')
+    }
+    return null
+}
+
 // Create certificate, savedCertificate = new certificate (a param in the callback function)
-router.post('/', async (request, response) => {
+certificateRouter.post('/', async (request, response) => {
     const body = request.body;
 
-    const user = await User.findById(body.userId)
+    // helper function getTokenFrom isolates token from authorization header
+    // jwt.verify checks token validity
+    const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: 'token invalid' })
+    }
+    const user = await User.findById(decodedToken.id)
 
     if(!user) {
-        return response.status(400).json({ error: 'userId missing or not valid' })
+        return response.status(400).json({ error: 'UserId missing or not valid' })
     }
 
     const certificate = new Certificate({
@@ -49,13 +65,13 @@ router.post('/', async (request, response) => {
     response.status(201).json(savedCertificate)
 });
 
-router.delete('/:id', async (request, response) => {
+certificateRouter.delete('/:id', async (request, response) => {
     await Certificate.findByIdAndDelete(request.params.id)
             response.status(204).end()
 });
 
 // Functionality to update a single certificate, allowing importance to be changed
-router.put('/:id', (request, response, next) => {
+certificateRouter.put('/:id', (request, response, next) => {
     const { content, important } = request.body;
 
     Certificate.findById(request.params.id)
@@ -74,4 +90,4 @@ router.put('/:id', (request, response, next) => {
         .catch(error => next(error))
 });
 
-export default router;
+export default certificateRouter;
