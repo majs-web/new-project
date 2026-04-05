@@ -1,6 +1,7 @@
 
 import { Router } from "express";
 import { Certificate } from '../models/certificates.js';
+import { User } from '../models/user.js';
 
 const router = Router();
 
@@ -8,7 +9,10 @@ const router = Router();
 
 // Defines event handler for HTTP GET requests to the certificates path of the app
 router.get('/', async (request, response) => {
-    const certificates = await Certificate.find({})
+    const certificates = await Certificate
+        .find({}).populate('user', { username: 1, name: 1 })
+        // .populate + {} returns username and name with the certificates
+
     response.json(certificates); // Calling json method will send array passed to it as a JSON string (good for db)
 });
 
@@ -26,12 +30,22 @@ router.get('/:id', async (request, response) => {
 router.post('/', async (request, response) => {
     const body = request.body;
 
+    const user = await User.findById(body.userId)
+
+    if(!user) {
+        return response.status(400).json({ error: 'userId missing or not valid' })
+    }
+
     const certificate = new Certificate({
         content: body.content,
         important: body.important || false,
+        user: user._id
     });
 
     const savedCertificate = await certificate.save()
+    user.certificates = user.certificates.concat(savedCertificate._id)
+    await user.save()
+
     response.status(201).json(savedCertificate)
 });
 
