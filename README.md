@@ -49,6 +49,10 @@ A web platform aimed to help farmers find and organize information about importa
 7. Install mongoose --> npm install mongoose
 8. Install env --> npm install dotenv
     - Important: add .env to .gitignore file
+9. Install eslint for finding style errors
+10. Install supertest
+11. Install bcrypt
+12. install jwsonwebtoken
 
 ?## Features (goal down the line)
 - Personalized dashboard to store relevant files, deadlines
