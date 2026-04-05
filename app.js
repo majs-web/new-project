@@ -7,10 +7,10 @@ import { errorHandler, requestLogger, unkownEndpoint } from './middlewares/logge
 import './config/database.js';
 
 // Import controller files
-import simpleRoutes from './controllers/simple-pages.js';
-import certificatesRoutes from './controllers/certificates.js';
-import loginRoutes from './controllers/login.js';
-import usersRoutes from './controllers/users.js';
+import simpleRouter from './controllers/simple-pages.js';
+import certificateRouter from './controllers/certificates.js';
+import loginRouter from './controllers/login.js';
+import usersRouter from './controllers/users.js';
 
 const app = express();
 
@@ -27,16 +27,19 @@ app.use(express.urlencoded({ extended: true }));
 // Tells Express to use EJS as a templating engine
 app.set('view engine', 'ejs');
 
+// Tells Express to look for ejs files in 'views' folder
+app.set('views', 'views');
+
 // Has to be used after json parser for request body to be initialized when logger is executed
 app.use(requestLogger);
 
 // Add route functions
-app.use(simpleRoutes);
-app.use('/views/certificates', certificatesRoutes); // 
-app.use(loginRoutes);
-app.use('/views/users', usersRoutes);
+app.use(simpleRouter);
+app.use('/certificates', certificateRouter); // 
+app.use('/login', loginRouter);
+app.use('/users', usersRouter);
 
-// This middleware after routes to catch requests maed to non-existent routes
+// This middleware after routes to catch requests made to non-existent routes
 app.use(unkownEndpoint);
 
 app.use(errorHandler);
