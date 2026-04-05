@@ -1,11 +1,20 @@
 
 import { Router } from "express";
 
-const simpleRouter = Router();
+const router = Router();
 
-simpleRouter.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1>');
+//Define the root
+router.get('/', (request, response) => {
+    response.render('index', {root: './'});
+});
+
+router.get('/legal', (request, response) => {
+    response.render('legal');
+});
+
+router.get('/about', (request, response) => {
+    response.render('about');
 });
 
 
-export default simpleRouter;
+export default router;
