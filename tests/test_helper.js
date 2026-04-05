@@ -8,7 +8,7 @@ export const initialCertificates = [
         important: false
     },
     {
-        content: 'Electrcal Certificate',
+        content: 'Electrical Certificate',
         important: true
     }
 ]
