@@ -6,8 +6,12 @@ import { User } from '../models/user.js';
 
 const loginRouter = Router();
 
-loginRouter.post('/', async (request, response) => {
-    const { username, password } = request.body
+loginRouter.get('/login', (request, response) => {
+    response.render('login')
+})
+
+loginRouter.post('/login', async (request, response) => {
+    const { username, name, password } = request.body
 
     // searches for user from the db by username attached to request
     const user = await User.findOne({ username })
@@ -32,13 +36,14 @@ loginRouter.post('/', async (request, response) => {
     }
     const token = jwt.sign(
         userForToken, 
-        process.env.SECRET,
+        process.env.JWT_SECRET || "dev-secret-123",
         { expiresIn: 60*60 } // Token expires, client forced to re-login
     )
 
     response
         .status(200)
-        .send({ token, username: user.username, name: user.name })
+        .render('profile', { token, username: user.username, name: user.name })
+
 })
 
 export default loginRouter;
