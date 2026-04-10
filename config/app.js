@@ -1,9 +1,9 @@
-/* 
+
 import 'dotenv/config';
 
 export const PORT = process.env.PORT;
 
-export const MONGODB_URI = process.env.MONGODB_URI; */
+export const MONGODB_URI = process.env.MONGODB_URI; 
 
 //Separate modes for development and testing -> remove the one line above 
 // See part 4: testing
@@ -13,4 +13,3 @@ export const MONGODB_URI = process.env.MONGODB_URI; */
     : process.env.MONGODB_URI */
 
 
-export const PORT = 3000;
