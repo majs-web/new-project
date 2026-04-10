@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head', {title: 'Profile | Bondeappen'}) %>
+<body>
+    <%- include('../includes/header') %>
+    <main>
+        <section class="container">
+            <h2>Welcome, <%= name %>!</h2><br />
+
+            <h4>What would you like to do?</h4>
+
+            <section class="profile-selection">
+                <a class="form-button" href="/certificates/new">Register new certificate</a>
+                <a class="form-button" href="/certificates">All certificates</a>
+                <a class="form-button" href="#">See my blog</a>
+            </section>
+
+            <a class="login-button" href="/logout">Log out</a>
+        </section>
+    </main>
+
+    <%- include('../includes/footer') %>
+</body>
+</html>
