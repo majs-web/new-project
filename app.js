@@ -36,10 +36,10 @@ app.use(requestLogger);
 
 // Add route functions
 app.use(simpleRouter);
-app.use('/certificates', certificateRouter); // 
+app.use('/profile/certificates', certificateRouter); // 
 app.use(loginRouter);
 app.use('/signup', usersRouter);
-app.use('/profile', profileRouter);
+/* app.use('/profile', profileRouter); */
 
 // This middleware after routes to catch requests made to non-existent routes
 app.use(unkownEndpoint);

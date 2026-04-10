@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('includes/head', {title: 'Certificates | Bondeappen' }) %>
+    <%- include('../../includes/head', {title: 'Register Certificate | Bondeappen'}) %>
 <body>
+    <%- include('../../includes/header') %>
 
-    <div>
-        <h1>Certificates</h1>
-        <ul>
-
-        </ul>
+    <div class="container">
+    <h2>My certificates</h2>
+    <ul class="news-list">
+        <% certificates.forEach(certificate => { %>
+        <li>
+            <% if(certificate.isInStock) { %> 
+            <h4><%= certificate.name %>: <%= certificate.description %></h4>
+            <a class="secondary" href="/certificates/<%= certificate.slug %>">Read more</a>
+            <% } else { %>
+            <%= certificate.name %> [NOT FOUND] 
+            <% } %>
+        </li>
+        <% }) %>
+    </ul>
+    <a class="cta-button" href="/certificates/new">Register new certficate</a><br/>
+    <a class="login-button" href="/profile">Back</a>
     </div>
-    
-    <%- include('includes/footer') %>
+
+    <%- include('../../includes/footer') %>
 </body>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../../includes/head', {title: 'Edit Certificate | Bondeappen '}) %>
+<body>
+    <%- include('../../includes/header') %>
+
+
+    <div class="container">
+        <h2>Edit certificate</h2>
+        <section class="contact-form">
+            <form action="/certificates/<%= certificate.slug %>" method="POST">
+            <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
+            <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
+            <input type="text" value="<%= certificate.description %>" name="description" placeholder="Description" /><br />
+            <button class="form-button">Save</button>
+            </form>
+        </section> 
+        <a class="login-button" href="/certificates/<%= certificate.slug %>">Back</a>
+    </div>
+
+
+    <%- include('../../includes/footer') %>
+</body>
+</html>
