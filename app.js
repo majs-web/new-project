@@ -11,6 +11,7 @@ import simpleRouter from './controllers/simple-pages.js';
 import certificateRouter from './controllers/certificates.js';
 import loginRouter from './controllers/login.js';
 import usersRouter from './controllers/users.js';
+import profileRouter from './controllers/profile.js';
 
 const app = express();
 
@@ -36,8 +37,9 @@ app.use(requestLogger);
 // Add route functions
 app.use(simpleRouter);
 app.use('/certificates', certificateRouter); // 
-app.use('/login', loginRouter);
-app.use('/users', usersRouter);
+app.use(loginRouter);
+app.use('/signup', usersRouter);
+app.use('/profile', profileRouter);
 
 // This middleware after routes to catch requests made to non-existent routes
 app.use(unkownEndpoint);
