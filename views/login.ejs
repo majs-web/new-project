@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./includes/head', {title: Login | Bondeappen }) %>
+    <%- include('includes/head', {title: 'Login | Bondeappen' }) %>
 <body>
+    <%- include('includes/header') %>
     
+    <% if (typeof error !== 'undefined') { %>
+    <p style="color:red"><%= error %></p>
+    <% } %>
+    <section class="contact-form">
+        <form method="POST" action="/login">
+            <h2>Log in</h2>
+            <input name="username" placeholder="Username" required />
+            <input name="password" placeholder="Password" type="password">
+            <button class="form-button">Login</button>
+        </form>
+
+        <div class="logo-and-info">
+            <h3>Don't have a profile yet?</h3>
+            <a href="/signup" class="login-button">Sign up</a>
+        </div>
+
+    <%- include('includes/footer') %>
 </body>
 </html>

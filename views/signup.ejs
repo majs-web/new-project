@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/head', {title: 'Sign up | Bondeappen'}) %>
+<body>
+    <%- include('includes/header') %>
+
+    <% if (typeof error !== 'undefined') { %>
+    <p style="color:red"><%= error %></p>
+    <% } %>
+
+    <form method="POST" action="/signup">
+        <h2>Sign up</h2>
+        <input name="username" placeholder="Username" required />
+        <input name="name" placeholder="Name" required />
+        <input name="password" placeholder="Password" type="password">
+        <button class="form-button">Sign up</button>
+    </form>
+    <div class="logo-and-info">
+        <h3>Already have a profile?</h3>
+        <a href="/login" class="login-button">Login</a>
+    </div>
+
+    <%- include('includes/footer') %>
+</body>
+</html>
