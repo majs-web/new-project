@@ -54,6 +54,7 @@ A web platform aimed to help farmers find and organize information about importa
 11. Install bcrypt
 12. install jwsonwebtoken
 13. Install validator for email validation
+14. Install cookie-parser
 
 ?## Features (goal down the line)
 - Personalized dashboard to store relevant files, deadlines
