@@ -53,6 +53,7 @@ A web platform aimed to help farmers find and organize information about importa
 10. Install supertest
 11. Install bcrypt
 12. install jwsonwebtoken
+13. Install validator for email validation
 
 ?## Features (goal down the line)
 - Personalized dashboard to store relevant files, deadlines
