@@ -4,21 +4,60 @@
 <body>
     <%- include('includes/header') %>
     
-    <% if (typeof error !== 'undefined') { %>
-    <p style="color:red"><%= error %></p>
-    <% } %>
-    <section class="contact-form">
-        <form method="POST" action="/login">
-            <h2>Log in</h2>
-            <input name="username" placeholder="Username" required />
-            <input name="password" placeholder="Password" type="password">
-            <button type="submit" class="form-button">Login</button>
-        </form>
+    <form method="POST" action="/login">
+        <h2>Log in</h2>
+        <label for="email">Email</label>
+        <input type="text" name="email" required />
+        <div class="email error"></div>
+        <label for="password">Password</label>
+        <input type="password" name="password" required />
+        <div class="password error"></div>
+        <button>Log in</button>
+    </form>
 
-        <div class="logo-and-info">
-            <h3>Don't have a profile yet?</h3>
-            <a href="/signup" class="login-button">Sign up</a>
-        </div>
+    <script>
+        const form = document.querySelector('form');
+        const emailError = document.querySelector('.email.error');
+        const passwordError = document.querySelector('.email.error');
+
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // resets errors every time we click commit
+            emailError.textContent = '';
+            passwordError.textContent = '';
+
+            // gets values
+            const email = form.email.value;
+            const password = form.password.value;
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await response.json();
+                console.log(data);
+                if (data.errors) {
+                    emailError.textContent = data.errors.email;
+                    passwordError.textContent = data.errors.password;
+                }
+                if (data.user) {
+                    location.assign('/');
+                }
+            }
+            catch (error) {
+                console.log(error);
+            }
+        })
+    </script>
+
+    <div class="logo-and-info">
+        <h3>Don't have a profile yet?</h3>
+        <a href="/signup" class="login-button">Sign up</a>
+    </div>
 
     <%- include('includes/footer') %>
 </body>
