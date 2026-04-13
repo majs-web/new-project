@@ -2,6 +2,7 @@ import express from 'express';
 
 // Import middleware
 import { errorHandler, requestLogger, unkownEndpoint } from './middlewares/logger.js';
+import cookieParser from 'cookie-parser';
 
 // Import config files
 import './config/database.js';
@@ -11,7 +12,8 @@ import simpleRouter from './controllers/simple-pages.js';
 import certificateRouter from './controllers/certificates.js';
 import loginRouter from './controllers/login.js';
 import usersRouter from './controllers/users.js';
-import profileRouter from './controllers/profile.js';
+
+import authRouter from './routes/auth_routes.js';
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.use(express.json());
 
 // Built-in middleware, allows us to read data sent through HTML forms
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 // Tells Express to use EJS as a templating engine
 app.set('view engine', 'ejs');
@@ -40,6 +44,8 @@ app.use('/profile/certificates', certificateRouter); //
 app.use(loginRouter);
 app.use('/signup', usersRouter);
 /* app.use('/profile', profileRouter); */
+
+app.use(authRouter)
 
 // This middleware after routes to catch requests made to non-existent routes
 app.use(unkownEndpoint);
