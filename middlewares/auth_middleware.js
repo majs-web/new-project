@@ -1,6 +1,6 @@
 
 import jwt from 'jsonwebtoken';
-
+import { User } from '../models/user1';
 
 export const requireAuth = (request, response, next) => {
     const token = request.cookies.jwt;
@@ -22,3 +22,25 @@ export const requireAuth = (request, response, next) => {
     }
 }
 
+// Check if current user is logged in
+export const checkUser = (request, response, next) => {
+    const token = request.cookies.jwt;
+
+    if (token) {
+        jwt.verify(token, 'secret-should-be-long-dont-post-it', async (error, decodedToken) => {
+            if (error) {
+                console.log(error.message);
+                response.locals.user = null;
+                next();
+            } else {
+                console.log(decodedToken);
+                let user = await User.findById(decodedToken.id);
+                response.locals.user = user;
+                next();
+            }
+        })
+    } else {
+        response.locals.user = null;
+        next();
+    }
+}
