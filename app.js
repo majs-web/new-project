@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use((request, response, next) => {
     if (request.method === 'GET') {
         return checkUser(request, response, next);
-    }
+    };
     next();
 });
 

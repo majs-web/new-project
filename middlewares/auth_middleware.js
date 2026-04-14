@@ -9,16 +9,16 @@ export const requireAuth = (request, response, next) => {
     // check json web token exists and is verified
     if (!token) {
         return response.status(401).json({ error: 'Not authorized' });
-    }
+    };
     jwt.verify(token, JWT_SECRET, async (error, decodedToken) => {
-        if (error) { return response.status(401).json({ error: 'Not authorized' }) }
+        if (error) { return response.status(401).json({ error: 'Not authorized' }) };
 
         const user = await User.findById(decodedToken.id);
         response.locals.user = user;
 
         next();
-    })
-}
+    });
+};
 
 // Check if current user is logged in
 export const checkUser = (request, response, next) => {
@@ -27,7 +27,7 @@ export const checkUser = (request, response, next) => {
     if (!token) {
         response.locals.user = null;
         return next();
-    }
+    };
     jwt.verify(token, JWT_SECRET, async (error, decodedToken) => {
         if (error) {
             response.locals.user = null;
@@ -36,5 +36,5 @@ export const checkUser = (request, response, next) => {
         const user = await User.findById(decodedToken.id);
         response.locals.user = user || null;
         next();
-    })
-}
+    });
+};

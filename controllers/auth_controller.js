@@ -9,15 +9,15 @@ const maxAge = 3 * 24 * 60 * 60;
 
 const createToken = (id) => {
     return jwt.sign({ id }, JWT_SECRET, { expiresIn: maxAge });
-}
+};
 
 router.get('/signup', (request, response) => {
     response.render('signup');
-})
+});
 
 router.get('/login', (request, response) => {
     response.render('login');
-})
+});
 
 router.post('/signup', async (request, response) => {
     try {
@@ -29,8 +29,7 @@ router.post('/signup', async (request, response) => {
             .cookie('jwt', token, {
                 httpOnly: true, 
                 sameSite: 'lax',
-                // set to true when deployed
-                secure: false,
+                secure: true,
                 maxAge: maxAge * 1000 
             });
             response.status(201).json({ user: user._id });
@@ -50,10 +49,9 @@ router.post('/login', async (request, response) => {
         response.cookie('jwt', token, { 
             httpOnly: true, 
             sameSite: 'lax',
-            // set to true when deployed
-            secure: false,
+            secure: true,
             maxAge: maxAge * 1000 
-        })
+        });
         response.status(200).json({ 
             user: user._id, 
             email: user.email, 
@@ -61,8 +59,8 @@ router.post('/login', async (request, response) => {
         });
     } catch (error) {
         response.status(400).json({ error: error.message });
-    }
-})
+    };
+});
 
 // Replaces the jwt cookie which lets the user stay logged in
 // Empty string value removes/replaces the token value
@@ -71,6 +69,6 @@ router.get('/logout', (request, response) => {
     response.cookie('jwt', '', { maxAge: 1 });
 
     return response.redirect('/');
-})
+});
 
 export default router;
