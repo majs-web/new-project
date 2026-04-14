@@ -3,20 +3,26 @@
     <%- include('includes/head', {title: 'Sign up | Bondeappen'}) %>
 <body>
     <%- include('includes/header') %>
+    <div class="general-setup">
+        <form id="signupForm" class="login-form">
+            <h2>Sign up</h2>
+            <label for="email">Email</label>
+            <input type="text" name="email" required />
+            <div class="email error"></div>
+            <label for="username">Username</label>
+            <input type="text" name="username" required />
+            <div class="username error"></div>
+            <label for="password">Password</label>
+            <input type="password" name="password" required />
+            <div class="password error"></div>
+            <button type="submit">Sign up</button>
+        </form>
 
-    <form id="signupForm">
-        <h2>Sign up</h2>
-        <label for="email">Email</label>
-        <input type="text" name="email" required />
-        <div class="email error"></div>
-        <label for="username">Username</label>
-        <input type="text" name="username" required />
-        <div class="username error"></div>
-        <label for="password">Password</label>
-        <input type="password" name="password" required />
-        <div class="password error"></div>
-        <button type="submit">Sign up</button>
-    </form>
+        <div class="logo-and-info">
+            <h3>Already have a profile?</h3>
+            <a href="/login" class="signin-button">Login</a>
+        </div>
+    </div>
 
     <script>
         const form = document.getElementById('signupForm');
@@ -58,11 +64,6 @@
             }
         })
     </script>
-
-    <div class="logo-and-info">
-        <h3>Already have a profile?</h3>
-        <a href="/login" class="login-button">Login</a>
-    </div>
 
     <%- include('includes/footer') %>
 </body>
