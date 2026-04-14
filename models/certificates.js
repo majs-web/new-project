@@ -4,16 +4,16 @@ const certificateSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        maxlength: 40
+        maxlength: 150
     },
     date: {
         type: Date, 
-        required: true
+        required: [true, 'remember to add a date']
     },
     content: { 
         type: String, 
         required: true,
-        maxlength: 300
+        maxlength: 500
     },
     slug: String,
     important: Boolean,
@@ -32,14 +32,14 @@ certificateSchema.pre('save', async function () {
             .trim()
             .replace(/[\s\W-]+/g, '-')
             .replace(/^-+|-+$/g, '');
-    }
+    };
 });
 
 certificateSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id.toString()
-        delete returnedObject._id
-        delete returnedObject.__v
+        returnedObject.id = returnedObject._id.toString();
+        delete returnedObject._id;
+        delete returnedObject.__v;
     }
 }); 
 

@@ -10,19 +10,19 @@ const userSchema = new mongoose.Schema({
         unique: true,
         lowercase: true,
         validate: [isEmail, 'Please enter a valid email'],
-        maxlength: 35
+        maxlength: 254
     },
     username: {
         type: String,
         required: [true, 'Please enter a username'], 
         unique: true,
-        maxlength: 20
+        maxlength: 50
     },
     password: {
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters'],
-        maxlength: 30
+        maxlength: 200
     },
     certificates: [
         {
@@ -43,22 +43,22 @@ userSchema.pre('save', async function () {
 userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({ email });
     if (user) {
-        const auth = await bcrypt.compare(password, user.password)
+        const auth = await bcrypt.compare(password, user.password);
         if (auth) {
             return user;
         }
         throw Error('incorrect password');
-    }
+    };
     throw Error('incorrect email');
-} 
+};
 
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id.toString()
-        delete returnedObject._id
-        delete returnedObject._v
-        delete returnedObject.password
+        returnedObject.id = returnedObject._id.toString();
+        delete returnedObject._id;
+        delete returnedObject._v;
+        delete returnedObject.password;
     }
-})
+});
 
 export const User = mongoose.model('user', userSchema);
