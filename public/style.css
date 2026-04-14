@@ -250,7 +250,8 @@ h2, h3 {
 .privacy-statement {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     grid-gap: 20px;
     margin-bottom: 4em;
     margin: 1em auto 1em auto;
