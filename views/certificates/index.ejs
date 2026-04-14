@@ -4,14 +4,14 @@
 <body>
     <%- include('../includes/header') %>
 
-    <div class="container">
+    <div class="general-setup">
     <h2>My certificates</h2>
     <ul class="news-list">
         <% certificates.forEach(certificate => { %>
         <li>
             <% if(certificate) { %> 
             <h4><%= certificate.name %>: <%= certificate.content %></h4>
-            <a class="secondary" href="/certificates/<%= certificate.slug %>">Read more</a>
+            <a class="signin-button" href="/certificates/<%= certificate.slug %>">Read more</a>
             <% } else { %>
             <%= certificate.name %> [NOT FOUND] 
             <% } %>
@@ -19,7 +19,7 @@
         <% }) %>
     </ul>
     <a class="cta-button" href="/certificates/new">Register new certficate</a><br/>
-    <a class="login-button" href="/profile">Back</a>
+    <a class="signin-button" href="/profile">Back</a>
     </div>
 
     <%- include('../includes/footer') %>

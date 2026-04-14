@@ -4,13 +4,13 @@
 <body>
     <%- include('../includes/header') %>
 
-    <div class="container">
+    <div class="general-setup">
         <h2><%= certificate.name %></h2>
         <p><em><%= new Date(certificate.date).toLocaleDateString() %></em></p>
         <p><%= certificate.content %></p>
-        <a class="login-button" href="/certificates/<%= certificate.slug %>/edit">Edit</a>
-        <a class="login-button" href="/certificates/<%= certificate.slug %>/delete">Delete</a><br/>
-        <a class="form-button" href="/profile">Back</a>
+        <a class="cta-button" href="/certificates/<%= certificate.slug %>/edit">Edit</a>
+        <a class="cta-button" href="/certificates/<%= certificate.slug %>/delete">Delete</a><br/>
+        <a class="signin-button" href="/profile">Back</a>
     </div>
 
     <%- include('../includes/footer') %>

@@ -5,9 +5,9 @@
     <%- include('../includes/header') %>
 
 
-    <div class="container">
+    <div class="general-setup">
         <h2>Edit certificate</h2>
-        <section class="contact-form">
+        <section class="certificate-form">
             <form action="/certificates/<%= certificate.slug %>" method="POST">
             <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
             <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
@@ -15,7 +15,7 @@
             <button class="form-button">Save</button>
             </form>
         </section> 
-        <a class="login-button" href="/certificates/<%= certificate.slug %>">Back</a>
+        <a class="signin-button" href="/certificates/<%= certificate.slug %>">Back</a>
     </div>
 
 
