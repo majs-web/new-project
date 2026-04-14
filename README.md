@@ -58,8 +58,18 @@ A web platform aimed to help farmers find and organize information about importa
 5. Install EJS templating engine --> npm install ejs
 6. Install mongodb --> npm install mongodb
 7. Install mongoose --> npm install mongoose
+    - I use MongoDB Atlas as an online database
+    - I have one cluster called "new-project" with two collections, "certificates" and "users"
+    - After signing up to MongoDB Atlas, on the dash, you can click "connect" -> "connect to driver"
+    - Find the connection string, keep until next step, step 8 below
 8. Install env --> npm install dotenv
     - Important: add .env to .gitignore file -> This file is for adding secret keys and code, you do not want it public on the internet
+    - After installing .env, create a .env file
+        - Add the following: 
+            1. MONGODB_URI=xyz
+            - Paste connection string here, make sure to add your db key to the link
+            2. PORT=xyz
+            - Add whichever port you are using
 9. Install eslint for finding style errors
 10. Install bcrypt --> npm install bcrypt
     - Used to hash passwords before storing them to db
