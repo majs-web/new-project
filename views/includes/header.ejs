@@ -1,11 +1,14 @@
 
 <header class="header">
     <div class="container">
-        <h1 class="logo"><a href="/">Bondeappen</a></h1>
+        <% if (user) { %>
+            <h1 class="logo"><a href="/profile">Bondeappen</a></h1>
+        <% } else { %>
+            <h1 class="logo"><a href="/">Bondeappen</a></h1>
+        <% } %>
         <nav class="nav">
             <ul>
                 <% if (user) { %>
-                    <li>Welcome, <%= user.username %></li>
                     <li><a href="/profile">Home</a></li>
                     <li><a href="/certificates"></a></li>
                     <li><a href="/logout">Log out</a></li>
