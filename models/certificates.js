@@ -1,30 +1,46 @@
-
-import mongoose from "mongoose";
-
+import mongoose from 'mongoose';
 
 const certificateSchema = new mongoose.Schema({
-    content: { // Define validation rules for each field
+    name: {
         type: String,
-        minLength: 5,
+        required: true,
+        maxlength: 40
+    },
+    date: {
+        type: Date, 
         required: true
     },
+    content: { 
+        type: String, 
+        required: true,
+        maxlength: 1000
+    },
+    slug: String,
     important: Boolean,
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: "User"
     }
 });
-// minLength and required validators are built into Mongoose
 
-// certificateSchema is an object --> should be turned into a string
+// NB: Used ChatGPT to figure out how to create this function
+// Turns the certificate name input into a slug
+certificateSchema.pre('save', async function () {
+    if (!this.slug) {
+        this.slug = this.name
+            .toLowerCase()
+            .trim()
+            .replace(/[\s\W-]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+});
+
 certificateSchema.set('toJSON', {
     transform: (document, returnedObject) => {
-        if (returnedObject._id) {
-            returnedObject.id = returnedObject._id.toString()
-        }
+        returnedObject.id = returnedObject._id.toString()
         delete returnedObject._id
         delete returnedObject.__v
     }
-});
+}); 
 
 export const Certificate = mongoose.model('Certificate', certificateSchema);
