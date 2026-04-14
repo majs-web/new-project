@@ -11,7 +11,7 @@
             <form action="/certificates/<%= certificate.slug %>" method="POST">
             <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
             <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
-            <input type="text" value="<%= certificate.description %>" name="description" placeholder="Description" /><br />
+            <input type="text" value="<%= certificate.content %>" name="content" placeholder="Description" /><br />
             <button class="form-button">Save</button>
             </form>
         </section> 

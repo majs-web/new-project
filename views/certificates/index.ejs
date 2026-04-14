@@ -9,8 +9,8 @@
     <ul class="news-list">
         <% certificates.forEach(certificate => { %>
         <li>
-            <% if(certificate.isInStock) { %> 
-            <h4><%= certificate.name %>: <%= certificate.description %></h4>
+            <% if(certificate) { %> 
+            <h4><%= certificate.name %>: <%= certificate.content %></h4>
             <a class="secondary" href="/certificates/<%= certificate.slug %>">Read more</a>
             <% } else { %>
             <%= certificate.name %> [NOT FOUND] 

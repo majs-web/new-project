@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head', {title: 'New Certificate | Bondeappen'}) %>
+<body>
+    <%- include('../includes/header') %>
+
+    <div class="container">
+        <h2>Add new certificate</h2>
+        <section class="contact-form">
+            <form id="certificateForm">
+                <input type="text" name="name" placeholder="Name" required /><br />
+                <input type="date" name="date" placeholder="Date" required /><br />
+                <input type="text" name="content" placeholder="Description" required /><br />
+                <button type="submit">Save</button><br />
+            </form>
+        </section>
+
+        <a class="login-button" href="/profile">Back</a>
+        <a class="login-button" href="/certificates">See all certificates</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('certificateForm');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = form.name.value;
+            const date = form.date.value;
+            const content = form.content.value;
+
+            try {
+                const response = await fetch('/certificates/new', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, date, content })
+                });
+
+                if (response.ok) {
+                    location.assign('/certificates');
+                } else {
+                    console.log('Request did not go through');
+                }
+            } catch (error) {
+                console.log('Network or server error:', error);
+            }
+        });
+    </script>
+
+    <%- include('../includes/footer') %>
+
+</body>
+</html>
