@@ -4,19 +4,23 @@
 <body>
     <%- include('../includes/header') %>
     <main>
-        <section class="container">
-            <h2>Welcome, <%= user.username %>!</h2><br />
+        <div class="general-setup">
+            <div class="profile-item">
+                <h2>Welcome, <%= user.username %>!</h2><br />
 
-            <h4>What would you like to do?</h4>
-
-            <section class="profile-selection">
-                <a class="form-button" href="/certificates/new">Register new certificate</a>
-                <a class="form-button" href="/certificates">All certificates</a>
-                <a class="form-button" href="#">See my blog</a>
-            </section>
-
-            <a class="login-button" href="/logout">Log out</a>
-        </section>
+                <h4>What would you like to do?</h4>
+            </div>
+        
+            <div class="profile-item">
+                <section class="profile-selection">
+                    <a class="signin-button" href="/certificates/new">Register new certificate</a>
+                    <a class="signin-button" href="/certificates">All certificates</a>
+                </section>
+            </div>
+            <div class="profile-item">
+                <a class="cta-button" href="/logout">Log out</a>
+            </div>
+        </div>
     </main>
 
     <%- include('../includes/footer') %>
