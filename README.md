@@ -44,6 +44,7 @@ A web platform aimed to help farmers find and organize information about importa
     - When logged in, users receive a cookie in the browser
         - I have middleware function that checks each get request to continuously verify the user
         - When user logs out, they get sent a replacement cookie which replaces the former cookie and expires immediately
+- Deployed to Google Cloud Run
 
 
 ## How to run 
