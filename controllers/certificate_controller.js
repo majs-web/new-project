@@ -8,14 +8,14 @@ const router = Router();
 
 router.get('/certificates', requireAuth, async (request, response) => {
     const user = response.locals.user;
-    const certificates = await Certificate.find({ user: user._id })
+    const certificates = await Certificate.find({ user: user._id });
     response.render('certificates/index', { certificates });
-})
+});
 
 // GET new certificate form
 router.get('/certificates/new', requireAuth, (request, response) => {
     response.render('certificates/new');
-})
+});
 
 router.post('/certificates/new', requireAuth, async (request, response) => {
     console.log('Body Received', request.body);
@@ -34,25 +34,25 @@ router.post('/certificates/new', requireAuth, async (request, response) => {
         const savedCertificate = await certificate.save();
         
         user.certificates.push(savedCertificate._id);
-        await user.save()
+        await user.save();
 
         response.status(201).json(savedCertificate);
     } catch(error) {
         console.error(error);
-        response.status(400).json({ error: 'Certificate could not be created'})
-    }
+        response.status(400).json({ error: 'Certificate could not be created'});
+    };
 }); 
 
 
 router.get('/certificates/:slug', requireAuth, async (request, response) => {
-    const certificate = await Certificate.findOne({ slug: request.params.slug })
+    const certificate = await Certificate.findOne({ slug: request.params.slug });
 
     if (!certificate.user.equals(response.locals.user._id)) {
-        return response.status(403).send('Not authorized')
-    }
+        return response.status(403).send('Not authorized');
+    };
 
-    response.render('certificates/show', { certificate: certificate })
-})
+    response.render('certificates/show', { certificate: certificate });
+});
 
 // GET edit certificate page
 router.get('/certificates/:slug/edit', requireAuth, async (request, response) => {
@@ -67,17 +67,21 @@ router.get('/certificates/:slug/edit', requireAuth, async (request, response) =>
     }catch(error) {
         console.error(error);
         response.status(404).send('Could not edit.');
-    }
+    };
 });
 
 // POST update certificate
-router.post('/certificates/:slug', requireAuth, async (request, response) => {
+router.post('/certificates/:slug/edit', requireAuth, async (request, response) => {
     try {
         const certificate = await Certificate.findOne({ slug: request.params.slug });
         if (!certificate) return response.status(404).send('Not found');
 
         if (!certificate.user.equals(response.locals.user._id))
             return response.status(403).send('Not authorized');
+
+        if (!request.body.date) {
+            return response.status(400).send('Need to add a date');
+        }
 
         certificate.name = request.body.name;
         certificate.date = request.body.date;
@@ -90,7 +94,7 @@ router.post('/certificates/:slug', requireAuth, async (request, response) => {
     }catch(error) {
         console.error(error);
         response.send('Error: The certificate could not be updated.');
-    }
+    };
 });
 
 // DELETE certificate
@@ -100,14 +104,14 @@ router.get('/certificates/:slug/delete', requireAuth, async (request, response) 
         if (!certificate) return response.status(404).send('Not found');
 
         if (!certificate.user.equals(response.locals.user._id))
-            return response.status(403).send('Not authorized')
+            return response.status(403).send('Not authorized');
 
         await certificate.deleteOne();
         response.redirect('/certificates');
     }catch(error) {
         console.error(error);
         response.send('Error: No certificate was deleted.');
-    }
+    };
 });
 
 export default router;
