@@ -13,7 +13,7 @@ const certificateSchema = new mongoose.Schema({
     content: { 
         type: String, 
         required: true,
-        maxlength: 1000
+        maxlength: 300
     },
     slug: String,
     important: Boolean,
