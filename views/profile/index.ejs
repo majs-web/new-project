@@ -5,13 +5,13 @@
     <%- include('../includes/header') %>
     <main>
         <section class="container">
-            <h2>Welcome, <%= username %>!</h2><br />
+            <h2>Welcome, <%= user.username %>!</h2><br />
 
             <h4>What would you like to do?</h4>
 
             <section class="profile-selection">
-                <a class="form-button" href="certificates">Register new certificate</a>
-                <a class="form-button" href="certificates">All certificates</a>
+                <a class="form-button" href="/certificates/new">Register new certificate</a>
+                <a class="form-button" href="/certificates">All certificates</a>
                 <a class="form-button" href="#">See my blog</a>
             </section>
 
