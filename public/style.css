@@ -330,3 +330,88 @@ h2, h3 {
 .new-list a:hover {
     text-decoration: underline;
 }
+
+/* Tablet (> 768px)*/
+
+@media (min-width: 768px) {
+    .general-setup {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        padding: 2em 3em;
+        max-width: 90%;
+    }
+
+    .hero {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 2em 3em;
+        max-width: 90%;
+    }
+    .hero img {
+        width: 350px;
+        height:350px;
+    }
+    .feature-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5em;
+        text-align: left;
+    }
+
+    .privacy-statement {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        padding: 2em 3em;
+        max-width: 90%;
+    }
+
+    .about-us {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 2em 3em;
+        max-width: 90%;
+    }
+    .about-us img {
+        width: 250px;
+        height: 250px;
+    }
+    
+}
+
+/* Desktop (>1200px) */
+
+@media (min-width: 1200px) {
+    .general-setup {
+        max-width: 1200px;
+        gap: 4em;
+        padding: 3em 5em;
+    }
+    
+    .hero {
+        max-width: 1200px;
+        gap: 4em;
+        padding: 3em 5em;
+    }
+
+    .privacy-statement {
+        max-width: 1200px;
+        gap: 4em;
+        padding: 3em 5em;
+    }
+    
+    .about-us {
+        max-width: 1200px;
+        gap: 4em;
+        padding: 3em 5em;
+    }
+
+}
