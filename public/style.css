@@ -1,0 +1,332 @@
+/* Setup fonts, colors, basic margins and padding */
+
+
+/* Setup fonts, colors, basic margins and padding*/
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+:root {
+    --base-color: #D6F2E1;
+    --text-color: #000000;
+    --primary-color: #0C7033;
+    --secondary-color: #EFFFF5;
+    --color-1: #FFFFFF;
+    --color-2: #B4E9C8;
+    --color-3: #248c55;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+}
+
+body {
+    padding: 1em;
+    background-color: var(--base-color);
+    line-height: 1.6;
+}
+
+h2, h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* For ensuring text and elements stay in place */
+.general-setup {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-gap: 20px;
+    margin-bottom: 4em;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+/* End basic setup fonts, colors, margins */
+
+/*Header setup*/
+
+.header {
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-1);
+    padding: min(1em, 15%);
+    border-radius: 0.5em;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.logo {
+    margin-right: auto;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+.nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-items: right;
+    flex-direction: row;
+    }
+
+.nav a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* Footer setup*/
+
+.site-footer {
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-2);
+    padding: min(1em, 15%);
+    border-radius: 0.5em;
+}
+
+.logo-info-connect {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.logo-and-info {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.nav-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+.nav-footer ul {
+    display: flex;
+    gap: .7rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: flex-start;
+    justify-items: center;
+    flex-direction: column;
+    font-family: 'Inter';
+    font-size: .8rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.nav-footer a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.nav-footer a:hover {
+    text-decoration: underline;
+}
+
+.connect-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.connect-footer a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.connect-footer a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    display: flex;
+    align-items: flex-start;
+    font-size: .7rem;
+}
+
+/* Index.html main setup */
+
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 20px;
+    margin-bottom: 4em;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+.feature-grid {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* About us main setup */
+
+.about-us {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 20px;
+    margin-bottom: 4em;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+/* Legal main setup */
+
+.privacy-statement {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-gap: 20px;
+    margin-bottom: 4em;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+/* Buttons */
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: var(--primary-color);
+    padding: .75em 1.25em;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+.signin-button {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding: .75em 1.25em;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+/* Forms */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em auto;
+    width: min(40%, 60%);
+    background-color: var(--primary-color);
+    padding: 1.5em;
+    border-radius: 0.5em;
+    color: var(--color-1);
+    text-align: center;
+}
+
+.certificate-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em auto;
+    width: min(40%, 60%);
+    background-color: var(--color-3);
+    padding: 1.5em;
+    border-radius: 0.5em;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* List */
+
+.profile-selection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-gap: 20px;
+    margin-bottom: 4em;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+.general-setup .new-list a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.new-list a:hover {
+    text-decoration: underline;
+}
