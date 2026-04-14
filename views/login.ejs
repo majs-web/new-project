@@ -4,7 +4,7 @@
 <body>
     <%- include('includes/header') %>
     
-    <form method="POST" action="/login">
+    <form id="loginForm">
         <h2>Log in</h2>
         <label for="email">Email</label>
         <input type="text" name="email" required />
@@ -12,13 +12,13 @@
         <label for="password">Password</label>
         <input type="password" name="password" required />
         <div class="password error"></div>
-        <button>Log in</button>
+        <button type="submit">Log in</button>
     </form>
 
     <script>
-        const form = document.querySelector('form');
+        const form = document.getElementById('loginForm');
         const emailError = document.querySelector('.email.error');
-        const passwordError = document.querySelector('.email.error');
+        const passwordError = document.querySelector('.password.error');
 
 
         form.addEventListener('submit', async (e) => {
