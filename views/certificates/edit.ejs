@@ -4,11 +4,10 @@
 <body>
     <%- include('../includes/header') %>
 
-
     <div class="general-setup">
         <h2>Edit certificate</h2>
         <section class="certificate-form">
-            <form action="/certificates/<%= certificate.slug %>" method="POST">
+            <form action="/certificates/<%= certificate.slug %>/edit" method="POST">
             <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
             <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
             <input type="text" value="<%= certificate.content %>" name="content" placeholder="Description" /><br />
