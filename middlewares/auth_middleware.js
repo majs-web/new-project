@@ -1,46 +1,40 @@
 
 import jwt from 'jsonwebtoken';
-import { User } from '../models/user1';
+import { User } from '../models/user.js';
+import { JWT_SECRET } from "../config/app.js";
 
 export const requireAuth = (request, response, next) => {
     const token = request.cookies.jwt;
 
     // check json web token exists and is verified
-    if (token) {
-        jwt.verify(token, 'secret-should-be-long-dont-post-it', (error, decodedToken) => {
-            if (error) {
-                console.log(error.message);
-                response.redirect('/login');
-            } else {
-                console.log(decodedToken);
-                next();
-            }
-        })
+    if (!token) {
+        return response.status(401).json({ error: 'Not authorized' });
     }
-    else {
-        response.redirect('/login');
-    }
+    jwt.verify(token, JWT_SECRET, async (error, decodedToken) => {
+        if (error) { return response.status(401).json({ error: 'Not authorized' }) }
+
+        const user = await User.findById(decodedToken.id);
+        response.locals.user = user;
+
+        next();
+    })
 }
 
 // Check if current user is logged in
 export const checkUser = (request, response, next) => {
     const token = request.cookies.jwt;
 
-    if (token) {
-        jwt.verify(token, 'secret-should-be-long-dont-post-it', async (error, decodedToken) => {
-            if (error) {
-                console.log(error.message);
-                response.locals.user = null;
-                next();
-            } else {
-                console.log(decodedToken);
-                let user = await User.findById(decodedToken.id);
-                response.locals.user = user;
-                next();
-            }
-        })
-    } else {
+    if (!token) {
         response.locals.user = null;
-        next();
+        return next();
     }
+    jwt.verify(token, JWT_SECRET, async (error, decodedToken) => {
+        if (error) {
+            response.locals.user = null;
+            return next();
+        }
+        const user = await User.findById(decodedToken.id);
+        response.locals.user = user || null;
+        next();
+    })
 }
