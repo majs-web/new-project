@@ -83,6 +83,10 @@ A web platform aimed to help farmers find and organize information about importa
 14. Install testing tool - Jest
     - npm install jest --save-dev (to save only to development, not production code)
     - Add to package.json: under "script", next to "test", write "jest"
+    - TIP: to see coverage, use npm test -- --coverage
+        - This creates a folder, "coverage"
+        - In coverage/ Icov-report, click index.html
+        - Start file with live server to see in browser
 
 ## Features (goal down the line)
 - Personalized dashboard to store relevant files, deadlines, news feature, blog
