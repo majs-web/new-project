@@ -80,6 +80,9 @@ A web platform aimed to help farmers find and organize information about importa
     - Library used to validate whether an email actually exists
 13. Install cookie-parser --> npm install cookie-parser
     - Needed to use the cookie
+14. Install testing tool - Jest
+    - npm install jest --save-dev (to save only to development, not production code)
+    - Add to package.json: under "script", next to "test", write "jest"
 
 ## Features (goal down the line)
 - Personalized dashboard to store relevant files, deadlines, news feature, blog
