@@ -7,11 +7,11 @@ const certificateSchema = new mongoose.Schema({
         maxlength: 150
     },
     date: {
-        type: Date, 
+        type: Date,
         required: [true, 'remember to add a date']
     },
-    content: { 
-        type: String, 
+    content: {
+        type: String,
         required: true,
         maxlength: 500
     },
@@ -19,7 +19,7 @@ const certificateSchema = new mongoose.Schema({
     important: Boolean,
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: 'User'
     }
 });
 
@@ -41,6 +41,6 @@ certificateSchema.set('toJSON', {
         delete returnedObject._id;
         delete returnedObject.__v;
     }
-}); 
+});
 
 export const Certificate = mongoose.model('Certificate', certificateSchema);

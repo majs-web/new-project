@@ -1,7 +1,7 @@
 
 import jwt from 'jsonwebtoken';
 import { User } from '../models/user.js';
-import { JWT_SECRET } from "../config/app.js";
+import { JWT_SECRET } from '../config/app.js';
 
 export const requireAuth = (request, response, next) => {
     const token = request.cookies.jwt;
@@ -11,7 +11,7 @@ export const requireAuth = (request, response, next) => {
         return response.status(401).json({ error: 'Not authorized' });
     };
     jwt.verify(token, JWT_SECRET, async (error, decodedToken) => {
-        if (error) { return response.status(401).json({ error: 'Not authorized' }) };
+        if (error) { return response.status(401).json({ error: 'Not authorized' }); };
 
         const user = await User.findById(decodedToken.id);
         response.locals.user = user;

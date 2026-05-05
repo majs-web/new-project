@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-import { MONGODB_URI } from "./app.js";
+import { MONGODB_URI } from './app.js';
 
 mongoose.connect(MONGODB_URI)
     .then(result => {
@@ -8,6 +8,6 @@ mongoose.connect(MONGODB_URI)
     })
     .catch(error => {
         console.log('error connecting to MongoDB: ', error.message);
-    })
+    });
 
 export const db = mongoose.connection;

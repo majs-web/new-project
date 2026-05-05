@@ -32,16 +32,16 @@ router.post('/certificates/new', requireAuth, async (request, response) => {
         });
 
         const savedCertificate = await certificate.save();
-        
+
         user.certificates.push(savedCertificate._id);
         await user.save();
 
         response.status(201).json(savedCertificate);
     } catch(error) {
         console.error(error);
-        response.status(400).json({ error: 'Certificate could not be created'});
+        response.status(400).json({ error: 'Certificate could not be created' });
     };
-}); 
+});
 
 
 router.get('/certificates/:slug', requireAuth, async (request, response) => {
@@ -59,10 +59,10 @@ router.get('/certificates/:slug/edit', requireAuth, async (request, response) =>
     try {
         const certificate = await Certificate.findOne({ slug: request.params.slug });
         if (!certificate) return response.status(404).send('Not found');
-        
+
         if (!certificate.user.equals(response.locals.user._id))
             return response.status(403).send('Not authorized');
-            
+
         response.render('certificates/edit', { certificate: certificate });
     }catch(error) {
         console.error(error);

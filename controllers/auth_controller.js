@@ -2,7 +2,7 @@
 import { Router } from 'express';
 import { User } from '../models/user.js';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from "../config/app.js";
+import { JWT_SECRET } from '../config/app.js';
 
 const router = Router();
 const maxAge = 3 * 24 * 60 * 60;
@@ -27,12 +27,12 @@ router.post('/signup', async (request, response) => {
 
         response
             .cookie('jwt', token, {
-                httpOnly: true, 
+                httpOnly: true,
                 sameSite: 'lax',
                 secure: true,
-                maxAge: maxAge * 1000 
+                maxAge: maxAge * 1000
             });
-            response.status(201).json({ user: user._id });
+        response.status(201).json({ user: user._id });
     } catch (error) {
         console.log('Signup error: ', error.message);
         response.status(400).json({ error: error.message });
@@ -46,16 +46,16 @@ router.post('/login', async (request, response) => {
         const user = await User.login(email, password);
         const token = createToken(user._id);
 
-        response.cookie('jwt', token, { 
-            httpOnly: true, 
+        response.cookie('jwt', token, {
+            httpOnly: true,
             sameSite: 'lax',
             secure: true,
-            maxAge: maxAge * 1000 
+            maxAge: maxAge * 1000
         });
-        response.status(200).json({ 
-            user: user._id, 
-            email: user.email, 
-            username: user.username 
+        response.status(200).json({
+            user: user._id,
+            email: user.email,
+            username: user.username
         });
     } catch (error) {
         response.status(400).json({ error: error.message });

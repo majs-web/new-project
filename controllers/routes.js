@@ -1,12 +1,12 @@
 
 import { Router } from 'express';
-import { requireAuth } from "../middlewares/auth_middleware.js";
+import { requireAuth } from '../middlewares/auth_middleware.js';
 
 const router = Router();
 
 //Define the root
 router.get('/', (request, response) => {
-    response.render('index', {root: './'});
+    response.render('index', { root: './' });
 });
 
 router.get('/about', (request, response) => {
