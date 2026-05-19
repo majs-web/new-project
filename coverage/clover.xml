@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1778000386242" clover="3.2.0">
-  <project timestamp="1778000386242" name="All files">
-    <metrics statements="166" coveredstatements="4" conditionals="44" coveredconditionals="4" methods="29" coveredmethods="1" elements="239" coveredelements="9" complexity="0" loc="166" ncloc="166" packages="5" files="9" classes="9"/>
+<coverage generated="1779229318725" clover="3.2.0">
+  <project timestamp="1779229318725" name="All files">
+    <metrics statements="162" coveredstatements="21" conditionals="40" coveredconditionals="10" methods="28" coveredmethods="4" elements="230" coveredelements="35" complexity="0" loc="162" ncloc="162" packages="4" files="8" classes="8"/>
     <package name="new-project">
       <metrics statements="17" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="app.js" path="/Users/majalie/Desktop/new-project/app.js">
@@ -137,30 +137,30 @@
       </file>
     </package>
     <package name="new-project.middlewares">
-      <metrics statements="21" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="10" methods="4" coveredmethods="4"/>
       <file name="auth_middleware.js" path="/Users/majalie/Desktop/new-project/middlewares/auth_middleware.js">
-        <metrics statements="21" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="38" count="0" type="stmt"/>
+        <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="10" methods="4" coveredmethods="4"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="10" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="38" count="2" type="stmt"/>
       </file>
     </package>
     <package name="new-project.models">
@@ -198,16 +198,6 @@
         <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="new-project.src">
-      <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-      <file name="main.js" path="/Users/majalie/Desktop/new-project/src/main.js">
-        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="2" type="cond" truecount="4" falsecount="0"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
       </file>
     </package>
   </project>
