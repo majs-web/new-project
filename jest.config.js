@@ -2,6 +2,11 @@
 // Set what folders to ignore:
 export default {
     testEnvironment: "node",
+    extensionsToTreatAsESM: ['.js'],
+    // To automatically mock the database import across all test files
+    moduleNameMapper: {
+        '^(\\.{1,2}/.*)\\.js$': '$1'
+    },
     collectCoverage: true,
     collectCoverageFrom: [
         '**/*.{js,mjs}',
