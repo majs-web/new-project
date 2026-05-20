@@ -77,7 +77,7 @@ describe('E2E: Full user journey', () => {
 
             expect(response.status).toBe(201);
             expect(response.body.user).toBeDefined();
-            
+
             const cookies = response.headers['set-cookie'];
             expect(cookies).toBeDefined();
             expect(cookies[0]).toMatch(/jwt=/);
@@ -140,7 +140,7 @@ describe('E2E: Full user journey', () => {
             mockFindById.mockResolvedValue(fakeUser);
             mockCertFindOne.mockResolvedValue({
                 name: 'AWS Cloud Practitioner',
-                slug: 'aws-cloud-practitionaer', 
+                slug: 'aws-cloud-practitionaer',
                 content: 'Cloud basics',
                 date: new Date(),
                 important: true,

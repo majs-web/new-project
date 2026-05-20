@@ -27,7 +27,7 @@ await jest.unstable_mockModule('../../models/user.js', () => ({
 const { App } = await import('../../app.js');
 
 const JWT_SECRET = 'test_secret_key';
-const makeToken = (id) => jwt.sign({ id }, JWT_SECRET, { expiresIn: '1d'});
+const makeToken = (id) => jwt.sign({ id }, JWT_SECRET, { expiresIn: '1d' });
 
 describe('Auth routes - integration', () => {
     beforeEach(() => {
@@ -101,7 +101,7 @@ describe('Auth routes - integration', () => {
 
             const response = await request(App)
                 .post('/login')
-                .send({ email: 'test@test.com', password: 'password123'});
+                .send({ email: 'test@test.com', password: 'password123' });
 
             expect(response.status).toBe(200);
             expect(response.body.email).toBe('test@test.com');
@@ -114,7 +114,7 @@ describe('Auth routes - integration', () => {
 
             const response = await request(App)
                 .post('/login')
-                .send({ email: 'test@test.com', password: 'password123'});
+                .send({ email: 'test@test.com', password: 'password123' });
 
             expect(response.headers['set-cookie']).toBeDefined();
             expect(response.headers['set-cookie'][0]).toMatch(/jwt=/);

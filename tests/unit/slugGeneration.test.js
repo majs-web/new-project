@@ -1,4 +1,4 @@
-// certificates slug generation 
+// certificates slug generation
 // tests slug in isolation, without MongoDB
 // test slug transformation function
 

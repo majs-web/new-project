@@ -1,7 +1,7 @@
 
 // Set what folders to ignore:
 export default {
-    testEnvironment: "node",
+    testEnvironment: 'nod',
     transform: {},
     collectCoverage: true,
     collectCoverageFrom: [
@@ -13,7 +13,6 @@ export default {
 
         //exclude tests themselves
         '!**/*.test.{js,mjs}',
-        
         // exclude static / templates
         '!public/**',
         '!views/**',
@@ -29,7 +28,7 @@ export default {
 // To see test coverage:
 // npm test -- --coverage
 
-// NB: To mock, instead of using jest.mock, use 
+// NB: To mock, instead of using jest.mock, use
 // jest.unstable_mockModule, e.g.:
 
 /* await jest.unstable_mockModule('fs', () => ({
@@ -37,7 +36,7 @@ export default {
     readFileSync: jest.fn(),
 })); */
 
-// To access jest object in ESM, import it: 
+// To access jest object in ESM, import it:
 // either
 
 /* import { jest } from '@jest/globals';
