@@ -32,7 +32,7 @@ describe('createToken (unit)', () => {
         expect(decoded.id).toBe(userId);
     });
 
-    test('decoded token contains an expiry (exp) field', () => {
+    test('decoded token contains an expiry field', () => {
         const token = createToken('abc123');
         const decoded = jwt.verify(token, JWT_SECRET);
         expect(decoded.exp).toBeDefined();

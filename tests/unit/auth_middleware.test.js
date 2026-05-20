@@ -39,7 +39,7 @@ const mockResponse = () => {
 
 // test: requireAuth
 
-describe('requreAuth (unit)', () => {
+describe('requreAuth', () => {
     let next;
 
     beforeEach(() => {
@@ -97,7 +97,7 @@ describe('requreAuth (unit)', () => {
 
 // test: checkUser
 
-describe('checkUser (unit)', () => {
+describe('checkUser', () => {
     let next;
 
     beforeEach(() => {

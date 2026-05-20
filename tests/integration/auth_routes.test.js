@@ -5,6 +5,7 @@ import { beforeEach, describe, expect, jest } from '@jest/globals';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 
+// mockin db
 await jest.unstable_mockModule('../../config/database.js', () => ({ db: {} }));
 await jest.unstable_mockModule('../../config/app.js', () => ({
     JWT_SECRET: 'test_secret_key',
