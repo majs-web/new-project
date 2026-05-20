@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -117,43 +117,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">39x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span></td><td class="text"><pre class="prettyprint lang-js">import express from 'express';
 &nbsp;
 // Import middleware
 import cookieParser from 'cookie-parser';
@@ -162,25 +162,25 @@ import { checkUser } from './middlewares/auth_middleware.js';
 // Import config files
 import './config/database.js';
 &nbsp;
-const app = <span class="cstat-no" title="statement not covered" >express();</span>
+const app = express();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >app.use(express.static('public'));</span>
+app.use(express.static('public'));
 &nbsp;
 // json-parser takes JSON data of a request, transforms it into JavaScript object,
 // then attached it to the body property of the request object before the route
 // handler is called (HTTP POST request)
-<span class="cstat-no" title="statement not covered" >app.use(express.json());</span>
+app.use(express.json());
 &nbsp;
 // Built-in middleware, allows us to read data sent through HTML forms
-<span class="cstat-no" title="statement not covered" >app.use(express.urlencoded({ extended: true }));</span>
+app.use(express.urlencoded({ extended: true }));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >app.use(cookieParser());</span>
+app.use(cookieParser());
 &nbsp;
-<span class="cstat-no" title="statement not covered" >app.use(<span class="fstat-no" title="function not covered" >(r</span>equest, response, next) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (request.method === 'GET') {</span>
-<span class="cstat-no" title="statement not covered" >        return checkUser(request, response, next);</span>
+app.use((request, response, next) =&gt; {
+    if (request.method === 'GET') {
+        return checkUser(request, response, next);
     };
-<span class="cstat-no" title="statement not covered" >    next();</span>
+    next();
 });
 &nbsp;
 import simpleRouter from './controllers/routes.js';
@@ -188,24 +188,24 @@ import authRouter from './controllers/auth_controller.js';
 import certRouter from './controllers/certificate_controller.js';
 &nbsp;
 // Tells Express to use EJS as a templating engine
-<span class="cstat-no" title="statement not covered" >app.set('view engine', 'ejs');</span>
+app.set('view engine', 'ejs');
 &nbsp;
 // Tells Express to look for ejs files in 'views' folder
-<span class="cstat-no" title="statement not covered" >app.set('views', 'views');</span>
+app.set('views', 'views');
 &nbsp;
 // Add route functions
-<span class="cstat-no" title="statement not covered" >app.use(simpleRouter);</span>
-<span class="cstat-no" title="statement not covered" >app.use(authRouter);</span>
-<span class="cstat-no" title="statement not covered" >app.use(certRouter);</span>
+app.use(simpleRouter);
+app.use(authRouter);
+app.use(certRouter);
 &nbsp;
-export const App = <span class="cstat-no" title="statement not covered" >app;</span></pre></td></tr></table></pre>
+export const App = app;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-19T22:21:58.701Z
+                at 2026-05-20T00:04:55.108Z
             </div>
         <script src="../prettify.js"></script>
         <script>
